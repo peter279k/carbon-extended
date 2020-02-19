@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="vendor/autoload.php" backupGlobals="false" verbose="true" processIsolation="true">
+  <testsuites>
+    <testsuite name="carbon-extended Test Suite">
+      <directory suffix="Test.php">tests/</directory>
+    </testsuite>
+  </testsuites>
+
+  <filter>
+    <whitelist processUncoveredFilesFromWhitelist="true">
+      <directory suffix=".php">src/</directory>
+    </whitelist>
+  </filter>
+</phpunit>
+

@@ -1,0 +1,21 @@
+language: php
+
+matrix:
+  include:
+  - php: 7.2
+  - php: 7.3
+  - php: 7.4
+
+sudo: false
+
+before_install:
+  - wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.2.0/php-coveralls.phar
+
+install:
+  - composer install
+
+script:
+  - vendor/bin/phpunit --verbose --coverage-clover build/coverage-clover.xml
+
+after_success:
+  - php php-coveralls.phar -v -c .coveralls.yml
