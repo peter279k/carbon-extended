@@ -1,5 +1,9 @@
 # carbon-extended
 
+[![Build Status](https://travis-ci.org/peter279k/carbon-extended.svg?branch=master)](https://travis-ci.org/peter279k/carbon-extended)
+[![Coverage Status](https://coveralls.io/repos/github/peter279k/carbon-extended/badge.svg?branch=master)](https://coveralls.io/github/peter279k/carbon-extended?branch=master)
+[![StyleCI](https://github.styleci.io/repos/241693344/shield?branch=master)](https://github.styleci.io/repos/241693344)
+
 ## Introduction
 
 - It can use some extended format on `Carbon::format` method
@@ -29,7 +33,7 @@ $result = $carbonExtended->extendedFormat($customizedFormat); // 1
 ## Available extended date formats
 
 - The customized format name is refer on SAS date format
-- Here are available extended formats: (it will br more customized formats...)
+- Here are available extended formats: (it will have more customized formats...)
 
 | customized format name |                                                                                    references                                                                                    |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
