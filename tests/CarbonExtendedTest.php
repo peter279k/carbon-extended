@@ -43,6 +43,25 @@ class CarbonExtendedTest extends TestCase
     }
 
     /**
+     * Formatting date time with customized format time test
+     *
+     * @dataProvider formatTimeDataProvider
+     *
+     * @param string $date
+     * @param string $customizedFormat
+     * @param string $expected
+     *
+     * @return void
+     */
+    public function testTimeFormat(string $date, string $customizedFormat, string $expected)
+    {
+        $carbonExtended = CarbonExtended::createFromFormat('Y-m-d H:i:s', $date);
+        $result = $carbonExtended->extendedFormat($customizedFormat);
+
+        $this->assertSame($expected, $result);
+    }
+
+    /**
      * The extended formats data provider
      *
      * @return array
@@ -57,6 +76,25 @@ class CarbonExtendedTest extends TestCase
             ['2012-05-01', 'JULIAN5.', '12122'],
             ['2012-05-01', 'JULIAN7.', '2012122'],
             ['2013-03-17', 'PDJULG4.', '2013076F'],
+        ];
+    }
+
+    /**
+     * The extended time format data provider
+     *
+     * @return array
+     */
+    public function formatTimeDataProvider()
+    {
+        return [
+            ['2013-03-17 16:24:43', 'TIMEAMPM3.', 'PM'],
+            ['2013-03-17 16:24:43', 'TIMEAMPM5.', '4 PM'],
+            ['2013-03-17 16:24:43', 'TIMEAMPM7.', '4:24 PM'],
+            ['2013-03-17 16:24:43', 'TIMEAMPM11.', '4:24:43 PM'],
+            ['2013-03-17 04:24:43', 'TIMEAMPM3.', 'AM'],
+            ['2013-03-17 04:24:43', 'TIMEAMPM5.', '4 AM'],
+            ['2013-03-17 04:24:43', 'TIMEAMPM7.', '4:24 AM'],
+            ['2013-03-17 04:24:43', 'TIMEAMPM11.', '4:24:43 AM'],
         ];
     }
 }
