@@ -9,6 +9,8 @@ class CarbonExtended extends Carbon
 {
     protected $firstSasDateValues = [-67019, '1776-07-04'];
 
+    protected $quarterRomanFormats = ['I', 'II', 'III', 'IV'];
+
     /**
      * Formatting quarter with customized QTR.format
      *
@@ -22,6 +24,22 @@ class CarbonExtended extends Carbon
         $quarterValue = $this->quarter;
 
         return str_replace($quarterFormat, $quarterValue, $extendedFormat);
+    }
+
+    /**
+     * Formatting Roman quarter with customized QTR.format
+     *
+     * @param string $extendedFormat
+     * @param string $quarterRomanFormat
+     *
+     * @return string
+     */
+    public function formatRomanQuarters(string $extendedFormat, string $quarterRomanFormat)
+    {
+        $quarterValue = $this->quarter;
+        $quarterRomanValue = $this->quarterRomanFormats[$quarterValue-1];
+
+        return str_replace($quarterRomanFormat, $quarterRomanValue, $extendedFormat);
     }
 
     /**
@@ -157,6 +175,7 @@ class CarbonExtended extends Carbon
     public function extendedFormat(string $extendedFormat)
     {
         $quarterFormat = 'QTR.';
+        $quarterRomanFormat = 'QTRR.';
         $julianDayFormat = 'JULDAY3.';
         $sasDateValueFormat = 'SAS_DATE_VALUE';
         $julianDateOnTwoDigitYearFormat = 'JULIAN5.';
@@ -165,6 +184,10 @@ class CarbonExtended extends Carbon
 
         if (stristr($extendedFormat, $quarterFormat) !== false) {
             $extendedFormat = $this->formatQuarters($extendedFormat, $quarterFormat);
+        }
+
+        if (stristr($extendedFormat, $quarterRomanFormat) !== false) {
+            $extendedFormat = $this->formatRomanQuarters($extendedFormat, $quarterRomanFormat);
         }
 
         if (stristr($extendedFormat, $julianDayFormat) !== false) {
