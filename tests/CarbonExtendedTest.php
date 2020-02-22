@@ -51,6 +51,7 @@ class CarbonExtendedTest extends TestCase
     {
         return [
             ['2013-03-17', 'QTR.', '1'],
+            ['2013-03-17', 'QTRR.', 'I'],
             ['2013-03-17', 'JULDAY3.', '76'],
             ['2013-03-17', 'SAS_DATE_VALUE', '19434'],
             ['2012-05-01', 'JULIAN5.', '12122'],
