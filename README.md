@@ -35,14 +35,16 @@ $result = $carbonExtended->extendedFormat($customizedFormat); // 1
 - The customized format name is refer on SAS date format
 - Here are available extended formats: (it will have more customized formats...)
 
-| customized format name |                                                                                    references                                                                                    |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| QTR.                   | [QTR. reference](https://documentation.sas.com/?docsetId=leforinforref&docsetTarget=n0mupey76zmd4sn15y96a03lrumz.htm&docsetVersion=1.0&locale=en)                                |
-| JULDAY3.               | [JULDAY3. reference](https://documentation.sas.com/?docsetId=leforinforref&docsetTarget=p0rzo1ok9zk0x4n1oz50uf9a5jle.htm&docsetVersion=1.0&locale=en)                            |
-| SAS_DATE_VALUE         | [SAS_DATE_VALUE reference](https://v8doc.sas.com/sashtml/lrcon/zenid-63.htm) |
-| JULIAN5.               | [JULIAN5. reference](https://documentation.sas.com/?docsetId=leforinforref&docsetTarget=p0f7u4z8iuaoygn183i6q1yc49xb.htm&docsetVersion=3.1&locale=en)                            |
-| JULIAN7.               | [JULIAN7. reference](https://documentation.sas.com/?docsetId=leforinforref&docsetTarget=p0f7u4z8iuaoygn183i6q1yc49xb.htm&docsetVersion=3.1&locale=en)                            |
-| PDJULG4.               | [PDJULG4. reference](https://documentation.sas.com/?docsetId=leforinforref&docsetTarget=n1gtaebcye6hpan1g6lcq2bj6580.htm&docsetVersion=1.0&locale=en)                            |
+| customized format name |                                                                      references                                                                       |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| QTR.                   | [QTR. reference](https://documentation.sas.com/?docsetId=leforinforref&docsetTarget=n0mupey76zmd4sn15y96a03lrumz.htm&docsetVersion=1.0&locale=en)     |
+| QTRR.                  | [QTRR. reference](https://documentation.sas.com/?docsetId=leforinforref&docsetTarget=p1tme300o05i9gn1lj4b25uxln45.htm&docsetVersion=3.2&locale=en)    |
+| JULDAY3.               | [JULDAY3. reference](https://documentation.sas.com/?docsetId=leforinforref&docsetTarget=p0rzo1ok9zk0x4n1oz50uf9a5jle.htm&docsetVersion=1.0&locale=en) |
+| SAS_DATE_VALUE         | [SAS_DATE_VALUE reference](https://v8doc.sas.com/sashtml/lrcon/zenid-63.htm)                                                                          |
+| JULIAN5.               | [JULIAN5. reference](https://documentation.sas.com/?docsetId=leforinforref&docsetTarget=p0f7u4z8iuaoygn183i6q1yc49xb.htm&docsetVersion=3.1&locale=en) |
+| JULIAN7.               | [JULIAN7. reference](https://documentation.sas.com/?docsetId=leforinforref&docsetTarget=p0f7u4z8iuaoygn183i6q1yc49xb.htm&docsetVersion=3.1&locale=en) |
+| PDJULG4.               | [PDJULG4. reference](https://documentation.sas.com/?docsetId=leforinforref&docsetTarget=n1gtaebcye6hpan1g6lcq2bj6580.htm&docsetVersion=1.0&locale=en) |
+| TIMEAMPM.              | [TIMEAMPM. reference](https://documentation.sas.com/?docsetId=ds2ref&docsetTarget=n0cvz66cg3fw2xn1uhrmwa6xmbb8.htm&docsetVersion=3.1&locale=en)       |
 
 
 ## References

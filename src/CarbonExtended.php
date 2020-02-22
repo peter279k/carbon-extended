@@ -11,6 +11,27 @@ class CarbonExtended extends Carbon
 
     protected $quarterRomanFormats = ['I', 'II', 'III', 'IV'];
 
+    protected  $timeAmPmToCarbonFormats = [
+        'TIMEAMPM3.' => 'A',
+        'TIMEAMPM5.' => 'h A',
+        'TIMEAMPM7.' => 'h:i A',
+        'TIMEAMPM11.' => 'h:i:s A',
+    ];
+
+    protected $quarterFormat = 'QTR.';
+
+    protected $quarterRomanFormat = 'QTRR.';
+
+    protected $julianDayFormat = 'JULDAY3.';
+
+    protected $sasDateValueFormat = 'SAS_DATE_VALUE';
+
+    protected $julianDateOnTwoDigitYearFormat = 'JULIAN5.';
+
+    protected $julianDateOnFourDigitYearFormat = 'JULIAN7.';
+
+    protected $packedJulianDateFormat = 'PDJULG4.';
+
     /**
      * Formatting quarter with customized QTR.format
      *
@@ -166,6 +187,26 @@ class CarbonExtended extends Carbon
     }
 
     /**
+     * Format time with AM and PM
+     *
+     * @param string $extendedFormat
+     * @param string $timeAmPmFormat
+     * @param string $carbonFormat
+     *
+     * @return string
+     */
+    public function formatTimeAmPm(string $extendedFormat, string $timeAmPmFormat, string $carbonFormat)
+    {
+        $timeAmPmValue = $this->format($carbonFormat);
+
+        if ($timeAmPmValue[0] === '0') {
+            $timeAmPmValue = substr($timeAmPmValue, 1);
+        }
+
+        return str_replace($timeAmPmFormat, $timeAmPmValue, $extendedFormat);
+    }
+
+    /**
      * using extended or normal format with given format string
      *
      * @param string $extendedFormat
@@ -174,42 +215,43 @@ class CarbonExtended extends Carbon
      */
     public function extendedFormat(string $extendedFormat)
     {
-        $quarterFormat = 'QTR.';
-        $quarterRomanFormat = 'QTRR.';
-        $julianDayFormat = 'JULDAY3.';
-        $sasDateValueFormat = 'SAS_DATE_VALUE';
-        $julianDateOnTwoDigitYearFormat = 'JULIAN5.';
-        $julianDateOnFourDigitYearFormat = 'JULIAN7.';
-        $packedJulianDateFormat = 'PDJULG4.';
+        $formattedResult = '';
 
-        if (stristr($extendedFormat, $quarterFormat) !== false) {
-            $extendedFormat = $this->formatQuarters($extendedFormat, $quarterFormat);
+        if (stristr($extendedFormat, $this->quarterFormat) !== false) {
+            $formattedResult = $this->formatQuarters($extendedFormat, $this->quarterFormat);
         }
 
-        if (stristr($extendedFormat, $quarterRomanFormat) !== false) {
-            $extendedFormat = $this->formatRomanQuarters($extendedFormat, $quarterRomanFormat);
+        if (stristr($extendedFormat, $this->quarterRomanFormat) !== false) {
+            $formattedResult = $this->formatRomanQuarters($extendedFormat, $this->quarterRomanFormat);
         }
 
-        if (stristr($extendedFormat, $julianDayFormat) !== false) {
-            $extendedFormat = $this->formatJulianDay($extendedFormat, $julianDayFormat);
+        if (stristr($extendedFormat, $this->julianDayFormat) !== false) {
+            $formattedResult = $this->formatJulianDay($extendedFormat, $this->julianDayFormat);
         }
 
-        if (stristr($extendedFormat, $sasDateValueFormat) !== false) {
-            $extendedFormat = $this->formatSasDateValue($extendedFormat, $sasDateValueFormat);
+        if (stristr($extendedFormat, $this->sasDateValueFormat) !== false) {
+            $formattedResult = $this->formatSasDateValue($extendedFormat, $this->sasDateValueFormat);
         }
 
-        if (stristr($extendedFormat, $julianDateOnTwoDigitYearFormat) !== false) {
-            $extendedFormat = $this->formatJulianDate($extendedFormat, $julianDateOnTwoDigitYearFormat);
+        if (stristr($extendedFormat, $this->julianDateOnTwoDigitYearFormat) !== false) {
+            $formattedResult = $this->formatJulianDate($extendedFormat, $this->julianDateOnTwoDigitYearFormat);
         }
 
-        if (stristr($extendedFormat, $julianDateOnFourDigitYearFormat) !== false) {
-            $extendedFormat = $this->formatJulianDate($extendedFormat, $julianDateOnFourDigitYearFormat);
+        if (stristr($extendedFormat, $this->julianDateOnFourDigitYearFormat) !== false) {
+            $formattedResult = $this->formatJulianDate($extendedFormat, $this->julianDateOnFourDigitYearFormat);
         }
 
-        if (stristr($extendedFormat, $packedJulianDateFormat) !== false) {
-            $extendedFormat = $this->formatPackedJulianDate($extendedFormat, $packedJulianDateFormat);
+        if (stristr($extendedFormat, $this->packedJulianDateFormat) !== false) {
+            $formattedResult = $this->formatPackedJulianDate($extendedFormat, $this->packedJulianDateFormat);
         }
 
-        return $extendedFormat;
+        foreach ($this->timeAmPmToCarbonFormats as $timeAmPmFormat => $carbonFormat) {
+            if (stristr($extendedFormat, $timeAmPmFormat) !== false) {
+                $formattedResult = $this->formatTimeAmPm($extendedFormat, $timeAmPmFormat, $carbonFormat);
+                break;
+            }
+        }
+
+        return $formattedResult;
     }
 }
