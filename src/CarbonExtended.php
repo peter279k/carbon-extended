@@ -11,7 +11,7 @@ class CarbonExtended extends Carbon
 
     protected $quarterRomanFormats = ['I', 'II', 'III', 'IV'];
 
-    protected  $timeAmPmToCarbonFormats = [
+    protected $timeAmPmToCarbonFormats = [
         'TIMEAMPM3.' => 'A',
         'TIMEAMPM5.' => 'h A',
         'TIMEAMPM7.' => 'h:i A',
